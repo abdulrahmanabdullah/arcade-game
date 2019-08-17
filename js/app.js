@@ -72,7 +72,7 @@ function Player() {
             this.y -= 50;
             if (this.y <= -1) {
                 this.y = -10;
-                sounds.win(new Audio('./sounds/win.wav'));
+                sounds.win(new Audio('../sounds/win.wav'));
                 this.playerScore += 100;
                 showToast(this.playerScore);
                 this.resetGame();
