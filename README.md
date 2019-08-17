@@ -1,10 +1,11 @@
 #  Arcade Game 🎮 🎮  
 
 ## Table of Contents
-
+- [HowTostartPlay](#startPlay)
 - [Instructions](#instructions)
-- [Contributing](#screenshot)
-
+- [Screenshot](#screenshot)
+## StartPlay
+**You can play in your machine by double click of index.html OR you can play [over here](https://abdulrahmanabdullah.github.io/arcade-game/index.html)**
 ## Instructions
 - Move vhicle to reach the water area :potable_water: 🚰 
 - Use keyboard arrows the move move vhicle:

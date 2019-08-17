@@ -18,7 +18,7 @@ Enemy.prototype.update = function (dt) {
     }
     // when bug collision char 
     if (isCollision(player.x, player.y, this.x, this.y)) {
-        sounds.crash();
+        sounds.crash(new Audio('./sounds/crash.wav'));
         // back to the start point
         player.resetGame();
         allLives.pop();
@@ -72,7 +72,7 @@ function Player() {
             this.y -= 50;
             if (this.y <= -1) {
                 this.y = -10;
-                sounds.win();
+                sounds.win(new Audio('./sounds/win.wav'));
                 this.playerScore += 100;
                 showToast(this.playerScore);
                 this.resetGame();
@@ -80,8 +80,6 @@ function Player() {
                 // make game more diffculte when user get 300 score. 
                 allEnemies = drawEnemye(this.playerScore);
             }
-            // this.playerScore >= 50 ? getModal('You Win','you made it ') : this.player += 50 ; 
-
         }
         // y axis
         else if (keys === 'down') {
@@ -92,8 +90,12 @@ function Player() {
         }
         // change char :: 
         else if (keys === 'space') {
-            sounds.flipe();
             this.imagePlayer = randomChar();
+            sounds.flipe(new Audio("./sounds/flipe.mp3"))
+                .then()
+                .catch((err) => {
+                    console.log(err);
+                });
         }
     }
 
@@ -140,18 +142,33 @@ function Score() {
 // Sound track class 
 function SoundTrack() {
 
-    this.win = () => {
-        let audio = new Audio('../sounds/win.wav');
-        audio.play();
+    this.win = (audio) => {
+        return new Promise((res, rej) => {
+            if (audio) {
+                res();
+                audio.play();
+            }
+            rej("Something went wrong");
+        });
     }
 
-    this.crash = () => {
-        let audio = new Audio('../sounds/crash.wav');
-        audio.play();
+    this.crash = (audio) => {
+        return new Promise((res, rej) => {
+            if (audio) {
+                res();
+                audio.play();
+            }
+            rej("Something went wrong");
+        });
     }
-    this.flipe = () => {
-        let audio = new Audio('../sounds/flipe.mp3');
-        audio.play();
+    this.flipe = (audio) => {
+        return new Promise((res, rej) => {
+            if (audio) {
+                res();
+                audio.play();
+            }
+            rej("Something wen wrong");
+        });
     }
 }
 
